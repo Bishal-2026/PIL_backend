@@ -1,0 +1,330 @@
+{
+  "superadmin": {
+    "hierarchy": 1,
+    "modules": {
+      "user": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "employees": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "contractors": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "sections": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "shift": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "attendance": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "rfid": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "dashboard": [
+        "read"
+      ],
+      "settings": [
+        "read",
+        "update"
+      ],
+      "activity": [
+        "read",
+        "delete"
+      ],
+      "permissions": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "role": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "visitors": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "location": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "vendors": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "device": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "admin": {
+    "hierarchy": 2,
+    "modules": {
+      "user": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "employees": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "contractors": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "sections": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "shift": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "attendance": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "rfid": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "dashboard": [
+        "read"
+      ],
+      "settings": [
+        "read",
+        "update"
+      ],
+      "activity": [
+        "read",
+        "delete"
+      ],
+      "permissions": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "role": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "visitors": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "location": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "device": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "hr": {
+    "hierarchy": 3,
+    "modules": {
+      "user": [
+        "read"
+      ],
+      "employees": [
+        "read"
+      ],
+      "contractors": [
+        "read"
+      ],
+      "sections": [
+        "read"
+      ],
+      "shift": [
+        "read"
+      ],
+      "attendance": [
+        "read"
+      ],
+      "rfid": [
+        "read"
+      ],
+      "dashboard": [
+        "read"
+      ],
+      "settings": [
+        "read"
+      ],
+      "activity": [
+        "read"
+      ],
+      "permissions": [
+        "read"
+      ],
+      "role": [
+        "read"
+      ],
+      "visitors": [
+        "read"
+      ],
+      "location": [
+        "read"
+      ],
+      "device": [
+        "read"
+      ]
+    }
+  },
+  "supervisor": {
+    "hierarchy": 4,
+    "modules": {
+      "employees": [
+        "read"
+      ],
+      "contractors": [
+        "read"
+      ],
+      "sections": [
+        "read"
+      ],
+      "shift": [
+        "read"
+      ],
+      "attendance": [
+        "read",
+        "update"
+      ],
+      "rfid": [
+        "read"
+      ],
+      "dashboard": [
+        "read"
+      ],
+      "visitors": [
+        "read"
+      ]
+    }
+  },
+  "manager": {
+    "hierarchy": 5,
+    "modules": {
+      "user": [
+        "read"
+      ],
+      "employees": [
+        "read"
+      ],
+      "contractors": [
+        "read"
+      ],
+      "sections": [
+        "read"
+      ],
+      "shift": [
+        "read"
+      ],
+      "attendance": [
+        "read"
+      ],
+      "rfid": [
+        "read"
+      ],
+      "dashboard": [
+        "read"
+      ],
+      "settings": [
+        "read"
+      ],
+      "visitors": [
+        "read"
+      ],
+      "location": [
+        "read"
+      ]
+    }
+  },
+  "employee": {
+    "hierarchy": 6,
+    "modules": {
+      "sections": [
+        "read"
+      ],
+      "shift": [
+        "read"
+      ],
+      "dashboard": [
+        "read"
+      ]
+    }
+  },
+  "contractor": {
+    "hierarchy": 7,
+    "modules": {
+      "sections": [
+        "read"
+      ],
+      "shift": [
+        "read"
+      ],
+      "dashboard": [
+        "read"
+      ]
+    }
+  }
+}

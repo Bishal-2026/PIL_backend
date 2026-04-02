@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device OTP Verification</title>
+    <style>
+        /* Basic responsive styles for email */
+        .preheader {
+            display: none !important;
+            visibility: hidden;
+            mso-hide: all;
+            font-size: 1px;
+            line-height: 1px;
+            max-height: 0;
+            max-width: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .btn {
+            background: #004aad;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .otp-box {
+            background: transparent;
+            border: none;
+            padding: 6px 8px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .otp {
+            display: inline-block;
+        }
+
+        .otp-digit {
+            display: inline-block;
+            border: none;
+            color: #0187ce;
+            background: #f1f7ff;
+            padding: 4px 5px;
+            border-radius: 6px;
+            margin: 0 4px;
+            font-weight: 900;
+            font-size: 22px;
+            font-family: 'Courier New', monospace;
+            line-height: 1;
+            min-width: 10px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width:480px) {
+            .otp-digit {
+                font-size: 18px;
+                padding: 5px 6px;
+                margin: 0 3px;
+                min-width: 26px;
+            }
+        }
+
+        .header {
+            background: #ffffff;
+            color: #004aad;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .logo {
+            height: 90px;
+            max-width: 160px;
+            display: block;
+            margin: 0 auto 8px;
+        }
+
+        @media only screen and (max-width:480px) {
+            .container {
+                width: 100% !important
+            }
+
+            .inner {
+                padding: 20px !important
+            }
+
+            .otp {
+                font-size: 28px !important;
+                letter-spacing: 6px !important;
+            }
+
+            .btn {
+                display: block;
+                width: 100% !important
+            }
+        }
+    </style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#eef1f5; font-family:Arial, Helvetica, sans-serif;">
+    <div class="preheader"
+        style="display:none!important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+        The Device Verification OTP is inside — valid for 10 minutes.
+    </div>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding:30px 0;">
+        <tr>
+            <td align="center">
+
+                <!-- Main Card -->
+                <table width="600" cellpadding="0" cellspacing="0" class="container"
+                    style="width:600px; max-width:600px; background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td class="header" align="center"
+                            style="padding: 18px 15px; background:#ffffff; color:#004aad;">
+                            <img src="cid:pidilite-logo" alt="PIL Logo" class="logo"
+                                style="height:90px; max-width:160px;" />
+                            <div style="font-size:18px; font-weight:700; margin-top:4px; color:#004aad;">Device
+                                Verification OTP </div>
+
+                        </td>
+                    </tr>
+
+                    <!-- Divider (subtle) -->
+                    <tr>
+                        <td style="height:4px; background:#eef1f5;"></td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding:30px; color:#333333;">
+
+                            <p style="font-size:15px; line-height:22px; margin:0 0 8px;">
+                                Name: <strong>{{USER_NAME}}</strong>
+                            </p>
+                            <p style="font-size:15px; line-height:22px; margin:0 0 8px;">
+                                EmployeeId: <strong>{{EMPLOYEE_ID}}</strong>
+                            </p>
+
+                            <!-- <p style="font-size:15px; line-height:22px; margin:0 0 20px;">
+                                Welcome to the <strong>PIL App.</strong> Use the OTP below to complete your
+                                registration. This code is only valid for a short time.
+                            </p> -->
+
+                            <!-- OTP Box -->
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <div class="otp-box"
+                                            style="background:transparent;border:none;padding:6px 8px;border-radius:8px;display:inline-block;">
+                                            <span class="otp" style="display:inline-block;">
+                                                {{otp_html}}
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+                            </table>
+
+                            <p style="font-size:14px; color:#555555; margin:25px 0 10px;">
+                                ⏱ This OTP is valid for <strong>10 minutes</strong>.
+                            </p>
+
+                            <p style="font-size:14px; color:#555555; margin:0;">
+                                For security reasons, please do not share this OTP with anyone. <br> Not your OTP ? <a
+                                    href="https://example.com/support" style="color:#004aad;text-decoration:underline;"
+                                    target="_blank" rel="noopener noreferrer"> Contact support</a>.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background:#f1f3f6; padding:18px; text-align:center;">
+                            <p style="font-size:12px; color:#777777; margin:0;">
+                                © 2026 Ajiva Infotech Pvt. Ltd. All rights reserved. • <a
+                                    href="https://example.com/privacy" style="color:#004aad; text-decoration:underline;"
+                                    target="_blank" rel="noopener noreferrer">Privacy</a>
+                            </p>
+                            <p style="font-size:12px; color:#777777; margin:8px 0 0;">
+                                This is an automated message. Please do not reply. If you didn't request this, <a
+                                    href="https://example.com/support" style="color:#004aad; text-decoration:underline;"
+                                    target="_blank" rel="noopener noreferrer">contact support</a>.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
