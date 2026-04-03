@@ -15,6 +15,8 @@ const workPermitSchema = {
   requestedBy: { type: String, default: "Sandeep Kumar" },
   supervisor: { type: String },
   safetyOfficer: { type: String },
+  emergencyContact: { type: String, default: "+91 99887-76655" },
+  emergencyPoint: { type: String, default: "Safety Station #04" },
   riskLevel: { type: String, enum: ["Low", "Medium", "High"], default: "Low" },
   hazards: [{ type: String }],
   ppe: [{ type: String }],
@@ -22,7 +24,9 @@ const workPermitSchema = {
   workers: [{
     name: String,
     id: String,
-    image: String
+    image: String,
+    workerType: { type: String, enum: ["Employee", "Contractor"], default: "Employee" },
+    company: String
   }],
   status: { 
     type: String, 
