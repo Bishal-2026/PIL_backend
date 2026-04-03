@@ -66,6 +66,7 @@ const employeeSchema = {
   vendorCode: { type: String, trim: true, uppercase: true, default: "", index: true },
   otpVerified: { type: Boolean, default: false, index: true },
   otpVerifiedAt: { type: Date, default: null },
+  isBusy: { type: Boolean, default: false },
   attendanceStatus: {
     type: String,
     enum: ["Present", "Absent", "On Leave", "Active", "Inactive"],
