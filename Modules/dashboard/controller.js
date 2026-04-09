@@ -3,6 +3,7 @@ const Employee = require("../employees/model");
 const Section = require("../sections/model");
 const Attendance = require("../attendance/model");
 const Visitor = require("../user/visitorModel");
+const VisitorLog = require("../visitorLogs/model");
 const DeviceEvent = require("../device/deviceEventModel");
 const Settings = require("../settings/model");
 const { resolveLocationScope } = require("../../helpers/locationScope");
@@ -313,7 +314,7 @@ exports.getSummary = async (req, res) => {
         await Promise.all([
           Contractor.countDocuments(buildLocationFallbackFilter(location)),
           Employee.countDocuments({ location, ...otpGateFilter }),
-          Visitor.countDocuments({ location, ...otpGateFilter }),
+          VisitorLog.countDocuments({ location, status: "Approved" }),
           Employee.countDocuments({ role: "manager", location }),
           Section.countDocuments(buildLocationFallbackFilter(location)),
           Attendance.countDocuments(attendanceFilter),
@@ -396,7 +397,7 @@ exports.getSummary = async (req, res) => {
       await Promise.all([
         Contractor.countDocuments({}),
         Employee.countDocuments({ ...otpGateFilter }),
-        Visitor.countDocuments({ ...otpGateFilter }),
+        VisitorLog.countDocuments({ status: "Approved" }),
         Employee.countDocuments({ role: "manager" }),
         Section.countDocuments({}),
         Attendance.countDocuments({}), // treating attendance entries as monthly reports

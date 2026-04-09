@@ -8,7 +8,23 @@ const generatePermitId = async () => {
 
 exports.getAll = async (req, res) => {
   try {
-    const permits = await WorkPermit.find().sort({ date: -1 });
+    const { status, assignedApprover } = req.query;
+    const filter = {};
+    
+    if (status) filter.status = status;
+    if (assignedApprover) filter.assignedApprover = assignedApprover;
+
+    const permits = await WorkPermit.find(filter).sort({ date: -1 });
+    res.status(200).json({ status: true, data: permits });
+  } catch (error) {
+    res.status(500).json({ status: false, message: error.message });
+  }
+};
+
+exports.getPublic = async (req, res) => {
+  try {
+    // TV Display: Only show approved permits
+    const permits = await WorkPermit.find({ status: "Approved" }).sort({ date: -1 });
     res.status(200).json({ status: true, data: permits });
   } catch (error) {
     res.status(500).json({ status: false, message: error.message });
@@ -33,8 +49,31 @@ exports.create = async (req, res) => {
     if (!permitData.permitId) {
         permitData.permitId = await generatePermitId();
     }
+    // Set initial status
+    permitData.status = "Pending";
+    
     const permit = await WorkPermit.create(permitData);
     res.status(201).json({ status: true, data: permit });
+  } catch (error) {
+    res.status(500).json({ status: false, message: error.message });
+  }
+};
+
+exports.updateStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!["Approved", "Rejected"].includes(status)) {
+        return res.status(400).json({ status: false, message: "Invalid status update" });
+    }
+
+    const permit = await WorkPermit.findByIdAndUpdate(id, { status }, { new: true });
+    if (!permit) {
+        return res.status(404).json({ status: false, message: "Permit not found" });
+    }
+
+    res.status(200).json({ status: true, message: `Permit ${status} successfully`, data: permit });
   } catch (error) {
     res.status(500).json({ status: false, message: error.message });
   }

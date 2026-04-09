@@ -34,6 +34,7 @@ const workPermitSchema = {
     default: "Pending" 
   },
   date: { type: Date, default: Date.now },
+  assignedApprover: { type: String, required: true },
   attachment: { type: String }
 };
 
