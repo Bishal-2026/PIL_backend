@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("./controller");
 
+router.get("/get-options", controller.getOptions);
 router.get("/all", controller.getAll);
 router.get("/public", controller.getPublic);
 router.get("/:id", controller.getById);

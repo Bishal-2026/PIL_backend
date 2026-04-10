@@ -10,8 +10,8 @@ const workPermitSchema = {
   area: { type: String },
   location: { type: String },
   exactLocation: { type: String },
-  startTime: { type: Date, required: true },
-  endTime: { type: Date, required: true },
+  startTime: { type: Date },
+  endTime: { type: Date },
   requestedBy: { type: String, default: "Sandeep Kumar" },
   supervisor: { type: String },
   safetyOfficer: { type: String },
@@ -34,7 +34,7 @@ const workPermitSchema = {
     default: "Pending" 
   },
   date: { type: Date, default: Date.now },
-  assignedApprover: { type: String, required: true },
+  assignedApprover: { type: String },
   attachment: { type: String }
 };
 

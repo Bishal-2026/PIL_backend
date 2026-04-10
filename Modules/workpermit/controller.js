@@ -102,3 +102,20 @@ exports.remove = async (req, res) => {
     res.status(500).json({ status: false, message: error.message });
   }
 };
+exports.getOptions = async (req, res) => {
+  try {
+    const fields = [
+      "workType", "riskLevel", "plant", "area", "location", 
+      "requestedBy", "supervisor", "safetyOfficer", "assignedApprover"
+    ];
+    
+    const options = {};
+    for (const field of fields) {
+      options[field] = await WorkPermit.distinct(field);
+    }
+
+    res.status(200).json({ status: true, data: options });
+  } catch (error) {
+    res.status(500).json({ status: false, message: error.message });
+  }
+};
