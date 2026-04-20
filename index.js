@@ -42,7 +42,8 @@ const corsOptions = {
     "http://localhost:5000",
     "http://localhost:4001",
     "https://pidiliteapp.ajivainfotech.com",
-    "https://pil.ajivainfotech.com"
+    "https://pil.ajivainfotech.com",
+    "https://pil.ajivatech.com"
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization",
@@ -72,12 +73,19 @@ const dropLegacyEmployeeIndexes = async () => {
 mongoose
   .connect(process.env.MONGO_URI)
   .then(async () => {
-    console.log("MongoDB connected");
+    console.log("✅ MongoDB connected");
     await dropLegacyEmployeeIndexes();
     startDevicePresenceMonitor();
     startWorkingHoursCron();
+
+    // ======Start the server========================//
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);
+  });
 
 //=======================Middleware===============================//
 app.use(cors(corsOptions));
@@ -115,6 +123,3 @@ fs.readdirSync(modulesPath).forEach((folder) => {
   }
 });
 
-// ======Start the server========================//
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
