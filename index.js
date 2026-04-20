@@ -1,9 +1,14 @@
-const dotenv = require("dotenv");
-dotenv.config();
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 const express = require("express");
 const mongoose = require("mongoose");
 const fs = require("fs");
-const path = require("path");
+
+console.log("🔍 Database URI detected:", process.env.MONGO_URI ? "YES" : "NO (undefined) ❌");
+if (!process.env.MONGO_URI) {
+  console.log("⚠️  Warning: MONGO_URI is not defined in .env file!");
+}
+
 const modulesPath = path.join(__dirname, "Modules");
 const { UPLOAD_ROOT } = require("./middleware/upload");
 const responseTimeLogger = require("./middleware/responseTimeLogger");
