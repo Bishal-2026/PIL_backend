@@ -13,8 +13,8 @@ const workPermitSchema = {
   startTime: { type: Date },
   endTime: { type: Date },
   requestedBy: { type: String, default: "Sandeep Kumar" },
-  supervisor: { type: String },
-  safetyOfficer: { type: String },
+  supervisor: [{ type: String }],
+  safetyOfficer: [{ type: String }],
   emergencyContact: { type: String, default: "+91 99887-76655" },
   emergencyPoint: { type: String, default: "Safety Station #04" },
   riskLevel: { type: String, enum: ["Low", "Medium", "High"], default: "Low" },
@@ -34,7 +34,7 @@ const workPermitSchema = {
     default: "Pending" 
   },
   date: { type: Date, default: Date.now },
-  assignedApprover: { type: String },
+  assignedApprover: [{ type: String }],
   attachment: { type: String }
 };
 

@@ -74,6 +74,8 @@ mongoose
   .then(async () => {
     console.log("MongoDB connected");
     await dropLegacyEmployeeIndexes();
+    startDevicePresenceMonitor();
+    startWorkingHoursCron();
   })
   .catch((err) => console.log(err));
 
@@ -115,6 +117,4 @@ fs.readdirSync(modulesPath).forEach((folder) => {
 
 // ======Start the server========================//
 const PORT = process.env.PORT || 5000;
-startDevicePresenceMonitor();
-startWorkingHoursCron();
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
