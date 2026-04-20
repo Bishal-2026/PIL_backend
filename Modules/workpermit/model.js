@@ -28,14 +28,19 @@ const workPermitSchema = {
     workerType: { type: String, enum: ["Employee", "Contractor"], default: "Employee" },
     company: String
   }],
-  status: { 
-    type: String, 
-    enum: ["Pending", "Approved", "Rejected"], 
-    default: "Pending" 
+  status: {
+    type: String,
+    enum: ["Pending", "Approved", "Rejected", "Stopped", "In Progress"],
+    default: "Pending"
   },
   date: { type: Date, default: Date.now },
   assignedApprover: [{ type: String }],
-  attachment: { type: String }
+  attachment: { type: String },
+  siteImage: { type: String },
+  exactLocationMarker: {
+    x: { type: Number },
+    y: { type: Number }
+  }
 };
 
 const workPermitModel = new ajModel("WorkPermit", workPermitSchema);
